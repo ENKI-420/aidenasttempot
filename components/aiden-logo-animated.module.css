@@ -1,0 +1,255 @@
+/* Base container */
+.logoContainer {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Circuit background animation */
+.circuitBg {
+  animation: fadeInOut 8s infinite alternate;
+}
+
+/* Pulse animation */
+.pulse {
+  transform-origin: center;
+  animation: pulse 4s infinite;
+  opacity: 0;
+}
+
+/* Circuit lines animations with staggered delays */
+.circuitLine1 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 0s;
+}
+
+.circuitLine2 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 0.3s;
+}
+
+.circuitLine3 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 0.6s;
+}
+
+.circuitLine4 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 0.9s;
+}
+
+.circuitLine5 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 1.2s;
+}
+
+.circuitLine6 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 1.5s;
+}
+
+.circuitLine7 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 1.8s;
+}
+
+.circuitLine8 {
+  animation: glowLine 3s infinite alternate;
+  animation-delay: 2.1s;
+}
+
+/* Node animations with staggered delays */
+.node1 {
+  animation: pulseNode 3s infinite alternate;
+  animation-delay: 0s;
+}
+
+.node2 {
+  animation: pulseNode 3s infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.node3 {
+  animation: pulseNode 3s infinite alternate;
+  animation-delay: 1s;
+}
+
+.node4 {
+  animation: pulseNode 3s infinite alternate;
+  animation-delay: 1.5s;
+}
+
+.node5 {
+  animation: pulseNode 3s infinite alternate;
+  animation-delay: 2s;
+}
+
+/* A letter animation */
+.aLetterPath {
+  animation: tracePath 8s infinite;
+}
+
+.aLetterCrossbar {
+  animation: tracePath 8s infinite;
+  animation-delay: 1s;
+}
+
+/* Interaction overlay */
+.interactionOverlay {
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+}
+
+/* Hover state */
+.logoContainer.hovered {
+  transform: scale(1.05);
+}
+
+.logoContainer.hovered .circuitLines path {
+  stroke-opacity: 1;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.logoContainer.hovered .nodes circle {
+  r: 1.2;
+  fill-opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.logoContainer.hovered .pulse {
+  opacity: 0.5;
+  animation-duration: 2s;
+}
+
+/* Pressed state */
+.logoContainer.pressed {
+  transform: scale(0.95);
+}
+
+.logoContainer.pressed .circuitBg {
+  fill-opacity: 0.4;
+}
+
+.logoContainer.pressed .aLetter path {
+  stroke: #0ea5e9;
+  transition: stroke 0.2s ease;
+}
+
+.logoContainer.pressed .nodes circle {
+  fill: #0ea5e9;
+  transition: fill 0.2s ease;
+}
+
+/* Focus state for keyboard navigation */
+.logoContainer:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInOut {
+  0% {
+    fill-opacity: 0.1;
+  }
+  50% {
+    fill-opacity: 0.3;
+  }
+  100% {
+    fill-opacity: 0.2;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes glowLine {
+  0% {
+    stroke-opacity: 0.5;
+    stroke-width: 1.5;
+  }
+  50% {
+    stroke-opacity: 1;
+    stroke-width: 2;
+  }
+  100% {
+    stroke-opacity: 0.5;
+    stroke-width: 1.5;
+  }
+}
+
+@keyframes pulseNode {
+  0% {
+    r: 0.8;
+    fill-opacity: 0.7;
+  }
+  50% {
+    r: 1.2;
+    fill-opacity: 1;
+  }
+  100% {
+    r: 0.8;
+    fill-opacity: 0.7;
+  }
+}
+
+@keyframes tracePath {
+  0% {
+    stroke-dasharray: 0 100;
+    stroke-dashoffset: 0;
+  }
+  20% {
+    stroke-dasharray: 100 0;
+    stroke-dashoffset: 0;
+  }
+  80% {
+    stroke-dasharray: 100 0;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 100 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Reduce animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .circuitBg,
+  .pulse,
+  .circuitLine1,
+  .circuitLine2,
+  .circuitLine3,
+  .circuitLine4,
+  .circuitLine5,
+  .circuitLine6,
+  .circuitLine7,
+  .circuitLine8,
+  .node1,
+  .node2,
+  .node3,
+  .node4,
+  .node5,
+  .aLetterPath,
+  .aLetterCrossbar {
+    animation: none;
+  }
+
+  .logoContainer,
+  .logoContainer.hovered,
+  .logoContainer.pressed {
+    transform: none;
+    transition: none;
+  }
+}

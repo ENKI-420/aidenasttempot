@@ -11,8 +11,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Bot, LayoutDashboard, Key, Settings, Bell, Menu, X, LogOut, HelpCircle } from "lucide-react"
+import {
+  LayoutDashboard,
+  Key,
+  Settings,
+  Bell,
+  Menu,
+  X,
+  LogOut,
+  HelpCircle,
+  CuboidIcon as Cube,
+  Repeat,
+} from "lucide-react"
 import { useState } from "react"
+import { AidenLogoAnimated } from "./aiden-logo-animated"
+import { ClickableLogo } from "./clickable-logo"
 
 export default function DashboardNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -22,10 +35,7 @@ export default function DashboardNav() {
       <div className="container mx-auto py-3 px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <Bot className="h-6 w-6 text-green-500" />
-              <span className="text-xl font-bold tracking-tight">NexusAI</span>
-            </Link>
+            <ClickableLogo href="/" />
 
             <nav className="hidden md:flex items-center gap-6">
               <Link href="/dashboard" className="text-gray-400 hover:text-green-500 transition flex items-center gap-2">
@@ -33,12 +43,26 @@ export default function DashboardNav() {
                 Dashboard
               </Link>
               <Link href="/bots" className="text-gray-400 hover:text-green-500 transition flex items-center gap-2">
-                <Bot className="h-4 w-4" />
+                <AidenLogoAnimated className="h-4 w-4" interactive={false} />
                 Bots
               </Link>
               <Link href="/api-keys" className="text-gray-400 hover:text-green-500 transition flex items-center gap-2">
                 <Key className="h-4 w-4" />
                 API Keys
+              </Link>
+              <Link
+                href="/logo-showcase"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <Cube className="h-4 w-4" />
+                Logo Showcase
+              </Link>
+              <Link
+                href="/logo-transition"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <Repeat className="h-4 w-4" />
+                Logo Transition
               </Link>
               <Link href="/settings" className="text-gray-400 hover:text-green-500 transition flex items-center gap-2">
                 <Settings className="h-4 w-4" />
@@ -106,12 +130,20 @@ export default function DashboardNav() {
               Dashboard
             </Link>
             <Link href="/bots" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
-              <Bot className="h-5 w-5" />
+              <AidenLogoAnimated className="h-5 w-5" interactive={false} />
               Bots
             </Link>
             <Link href="/api-keys" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
               <Key className="h-5 w-5" />
               API Keys
+            </Link>
+            <Link href="/logo-showcase" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
+              <Cube className="h-5 w-5" />
+              Logo Showcase
+            </Link>
+            <Link href="/logo-transition" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
+              <Repeat className="h-5 w-5" />
+              Logo Transition
             </Link>
             <Link href="/settings" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
               <Settings className="h-5 w-5" />

@@ -6,8 +6,13 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "GitHub Login",
-  description: "Sign in to GitHub",
+  title: "AIDEN",
+  description: "Advanced AI Platform",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+  manifest: "/manifest.json",
     generator: 'v0.dev'
 }
 

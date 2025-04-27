@@ -1,0 +1,42 @@
+/* Additional styles for the large logo */
+.aidenText path {
+  transition: fill 0.3s ease, transform 0.2s ease;
+}
+
+.logoContainer.hovered .aidenText path {
+  fill: #0ea5e9;
+}
+
+.textChar1 {
+  transition-delay: 0s;
+}
+
+.textChar2 {
+  transition-delay: 0.05s;
+}
+
+.textChar3 {
+  transition-delay: 0.1s;
+}
+
+.textChar4 {
+  transition-delay: 0.15s;
+}
+
+.textChar5 {
+  transition-delay: 0.2s;
+}
+
+.textPressed {
+  transform: translateY(1px);
+}
+
+.logoContainer.hovered .tagline {
+  fill: #a3e635;
+  transition: fill 0.3s ease;
+}
+
+/* Logo icon specific hover effects */
+.logoContainer.hovered .logoIcon {
+  filter: drop-shadow(0 0 3px rgba(16, 185, 129, 0.5));
+}

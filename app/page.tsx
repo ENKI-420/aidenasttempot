@@ -1,6 +1,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Bot, Key, Shield, Zap } from "lucide-react"
+import { ArrowRight, Key, Shield, Zap } from "lucide-react"
+import { AidenLogoAnimated } from "@/components/aiden-logo-animated"
+import { ClickableLogo } from "@/components/clickable-logo"
+import { HomeLogoTransition } from "@/components/home-logo-transition"
 
 export default function Home() {
   return (
@@ -8,10 +11,8 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-green-900/40 py-4 px-6">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <Bot className="h-8 w-8 text-green-500" />
-            <span className="text-2xl font-bold tracking-tight">NexusAI</span>
-          </div>
+          <ClickableLogo href="/" />
+
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/dashboard" className="text-gray-400 hover:text-green-500 transition">
               Dashboard
@@ -42,25 +43,30 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-20 px-6 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto max-w-5xl">
-          <div className="flex flex-col items-center text-center">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              <span className="text-green-500">Advanced</span> AI Bot Platform
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mb-10">
-              Create, manage, and deploy powerful AI bots capable of handling large files and complex tasks with our
-              secure API key generation system.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/signup">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-black font-medium">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/docs">
-                <Button size="lg" variant="outline" className="border-green-700 text-green-500 hover:bg-green-900/20">
-                  View Documentation
-                </Button>
-              </Link>
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+                <span className="text-green-500">Advanced</span> AI Bot Platform
+              </h1>
+              <p className="text-xl text-gray-400 mb-10">
+                Create, manage, and deploy powerful AI bots capable of handling large files and complex tasks with our
+                secure API key generation system.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/signup">
+                  <Button size="lg" className="bg-green-600 hover:bg-green-700 text-black font-medium">
+                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/logo-transition">
+                  <Button size="lg" variant="outline" className="border-green-700 text-green-500 hover:bg-green-900/20">
+                    View Logo Transitions
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            <div className="flex-1 flex justify-center">
+              <HomeLogoTransition />
             </div>
           </div>
         </div>
@@ -75,7 +81,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition">
               <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6">
-                <Bot className="h-6 w-6 text-green-500" />
+                <AidenLogoAnimated className="h-6 w-6 text-green-500" />
               </div>
               <h3 className="text-xl font-bold mb-3">Advanced Bot Creation</h3>
               <p className="text-gray-400">
@@ -113,7 +119,7 @@ export default function Home() {
             Ready to <span className="text-green-500">Power Up</span> Your AI?
           </h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            Join thousands of developers and companies building the next generation of AI applications with NexusAI.
+            Join thousands of developers and companies building the next generation of AI applications with AIDEN.
           </p>
           <Link href="/signup">
             <Button size="lg" className="bg-green-600 hover:bg-green-700 text-black font-medium">
@@ -127,10 +133,7 @@ export default function Home() {
       <footer className="mt-auto py-10 px-6 bg-gray-900 border-t border-green-900/40">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-2 mb-6 md:mb-0">
-              <Bot className="h-6 w-6 text-green-500" />
-              <span className="text-xl font-bold">NexusAI</span>
-            </div>
+            <ClickableLogo className="mb-6 md:mb-0" />
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
               <Link href="/about" className="hover:text-green-500 transition">
                 About
@@ -150,7 +153,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-green-900/40 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} NexusAI. All rights reserved.
+            © {new Date().getFullYear()} AIDEN. All rights reserved.
           </div>
         </div>
       </footer>
