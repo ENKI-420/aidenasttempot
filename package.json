@@ -67,9 +67,9 @@
     "@react-three/fiber": "latest",
     "@emotion/is-prop-valid": "latest",
     "ai": "latest",
-    "@ai-sdk/openai": "latest",
     "@react-three/drei": "latest",
-    "framer-motion": "latest"
+    "framer-motion": "latest",
+    "@ai-sdk/openai": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

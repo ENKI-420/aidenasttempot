@@ -1,9 +1,8 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Key, Shield, Zap } from "lucide-react"
-import { AidenLogoAnimated } from "@/components/aiden-logo-animated"
+import { ArrowRight, Shield, Zap, Brain, ClipboardList } from "lucide-react"
 import { ClickableLogo } from "@/components/clickable-logo"
-import { HomeLogoTransition } from "@/components/home-logo-transition"
+import { GenomicVisualization3D } from "@/components/genomic-visualization-3d"
 
 export default function Home() {
   return (
@@ -46,27 +45,29 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                <span className="text-green-500">Advanced</span> AI Bot Platform
+                <span className="text-green-500">Genomic</span> AI Frontiers
               </h1>
               <p className="text-xl text-gray-400 mb-10">
-                Create, manage, and deploy powerful AI bots capable of handling large files and complex tasks with our
-                secure API key generation system.
+                Visualizing the boundary between current genomic analysis capabilities and future possibilities. Our
+                platform illuminates what AI can analyze today in clinical genomics—and how these insights translate to
+                actionable medical outcomes at the frontier of precision medicine.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/signup">
                   <Button size="lg" className="bg-green-600 hover:bg-green-700 text-black font-medium">
-                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                    Explore Clinical Genomics <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/logo-transition">
+                <Link href="/patient-case-studies">
                   <Button size="lg" variant="outline" className="border-green-700 text-green-500 hover:bg-green-900/20">
-                    View Logo Transitions
+                    View Patient Case Studies
                   </Button>
                 </Link>
               </div>
             </div>
-            <div className="flex-1 flex justify-center">
-              <HomeLogoTransition />
+            <div className="flex-1 flex justify-center relative">
+              <div className="absolute w-full h-full bg-green-500/5 rounded-full filter blur-3xl"></div>
+              <GenomicVisualization3D width={400} height={400} autoRotate={true} showLabels={true} />
             </div>
           </div>
         </div>
@@ -79,27 +80,40 @@ export default function Home() {
             <span className="text-green-500">Powerful</span> Features
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition">
-              <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6">
-                <AidenLogoAnimated className="h-6 w-6 text-green-500" />
+            <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition group">
+              <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6 group-hover:bg-green-900/30 transition-colors">
+                <Brain className="h-6 w-6 text-green-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Advanced Bot Creation</h3>
-              <p className="text-gray-400">
-                Build sophisticated AI bots that can process large files and handle complex tasks with our intuitive
-                interface.
+              <h3 className="text-xl font-bold mb-3">Multi-Modal Collaborative Agents</h3>
+              <p className="text-gray-400 mb-4">
+                Deploy sophisticated AI agents that collaborate across multiple models and modalities, processing text,
+                images, audio, and more for comprehensive solutions.
               </p>
+              <Link
+                href="/agent-collaboration"
+                className="text-green-500 hover:text-green-400 text-sm font-medium flex items-center"
+              >
+                View Collaboration Diagram <ArrowRight className="ml-1 h-3 w-3" />
+              </Link>
             </div>
-            <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition">
-              <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6">
-                <Key className="h-6 w-6 text-green-500" />
+            <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition group">
+              <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6 group-hover:bg-green-900/30 transition-colors">
+                <ClipboardList className="h-6 w-6 text-green-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3">API Key Generation</h3>
-              <p className="text-gray-400">
-                Create and manage secure API keys for your bots with granular permission controls and usage monitoring.
+              <h3 className="text-xl font-bold mb-3">Clinical Case Studies</h3>
+              <p className="text-gray-400 mb-4">
+                Explore real-world examples of how genomic data translates to clinical decisions through AI-powered
+                analysis and personalized treatment recommendations.
               </p>
+              <Link
+                href="/patient-case-studies"
+                className="text-green-500 hover:text-green-400 text-sm font-medium flex items-center"
+              >
+                View Patient Cases <ArrowRight className="ml-1 h-3 w-3" />
+              </Link>
             </div>
-            <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition">
-              <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6">
+            <div className="bg-black p-8 rounded-lg border border-green-900/40 hover:border-green-500/40 transition group">
+              <div className="bg-green-900/20 p-3 rounded-full w-fit mb-6 group-hover:bg-green-900/30 transition-colors">
                 <Shield className="h-6 w-6 text-green-500" />
               </div>
               <h3 className="text-xl font-bold mb-3">Enterprise Security</h3>

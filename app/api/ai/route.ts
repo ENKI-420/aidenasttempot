@@ -1,32 +1,65 @@
 import { streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
+import type { NextRequest } from "next/server"
+import { withErrorHandling } from "@/lib/api-middleware"
+import { createExternalServiceError, createValidationError, tryCatch } from "@/lib/error-handling"
+import { logger } from "@/lib/logger"
 
 export const runtime = "edge"
 
-export async function POST(req: Request) {
-  try {
-    const { messages, featureId, featureTitle } = await req.json()
+async function handler(req: NextRequest) {
+  return await tryCatch(
+    async () => {
+      const body = await req.json().catch(() => ({}))
+      const { messages, featureId, featureTitle } = body
 
-    // Create a system message that provides context about the feature
-    const systemMessage = getSystemMessageForFeature(featureId, featureTitle)
+      // Validate required fields
+      if (!messages || !Array.isArray(messages)) {
+        throw createValidationError("Messages array is required")
+      }
 
-    // Prepare the messages array with the system message first
-    const apiMessages = [{ role: "system", content: systemMessage }, ...messages]
+      if (!featureId) {
+        throw createValidationError("Feature ID is required")
+      }
 
-    const result = streamText({
-      model: openai("gpt-4o"),
-      messages: apiMessages,
-    })
+      if (!featureTitle) {
+        throw createValidationError("Feature title is required")
+      }
 
-    // Convert the response to a streaming text response
-    return result.toDataStreamResponse()
-  } catch (error) {
-    console.error("OpenAI API error:", error)
-    return new Response(JSON.stringify({ error: "An error occurred while processing your request" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    })
-  }
+      // Create a system message that provides context about the feature
+      const systemMessage = getSystemMessageForFeature(featureId, featureTitle)
+
+      // Prepare the messages array with the system message first
+      const apiMessages = [{ role: "system", content: systemMessage }, ...messages]
+
+      logger.info("Processing AI request", {
+        featureId,
+        featureTitle,
+        messageCount: messages.length,
+      })
+
+      try {
+        const result = streamText({
+          model: openai("gpt-4o"),
+          messages: apiMessages,
+        })
+
+        // Convert the response to a streaming text response
+        return result.toDataStreamResponse()
+      } catch (error: any) {
+        logger.error("OpenAI API error", { error })
+        throw createExternalServiceError("An error occurred while processing your request", {
+          originalError: error.message,
+        })
+      }
+    },
+    (error) => {
+      logger.error("AI request failed", { error })
+      return createExternalServiceError("Failed to process AI request", {
+        originalError: error.message,
+      })
+    },
+  )
 }
 
 // Helper function to generate system messages based on the feature
@@ -113,3 +146,5 @@ Information about Modern Development Workflow:
       return baseContext
   }
 }
+
+export const POST = withErrorHandling(handler)

@@ -22,6 +22,10 @@ import {
   HelpCircle,
   CuboidIcon as Cube,
   Repeat,
+  Brain,
+  Activity,
+  ClipboardList,
+  Clock,
 } from "lucide-react"
 import { useState } from "react"
 import { AidenLogoAnimated } from "./aiden-logo-animated"
@@ -51,6 +55,27 @@ export default function DashboardNav() {
                 API Keys
               </Link>
               <Link
+                href="/agent-collaboration"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <Brain className="h-4 w-4" />
+                Agent Collaboration
+              </Link>
+              <Link
+                href="/genomic-visualization"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <Activity className="h-4 w-4" />
+                Genomic Visualization
+              </Link>
+              <Link
+                href="/patient-case-studies"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <ClipboardList className="h-4 w-4" />
+                Patient Cases
+              </Link>
+              <Link
                 href="/logo-showcase"
                 className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
               >
@@ -64,9 +89,23 @@ export default function DashboardNav() {
                 <Repeat className="h-4 w-4" />
                 Logo Transition
               </Link>
+              <Link
+                href="/comparative-genomics"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <Brain className="h-4 w-4" />
+                Comparative Genomics
+              </Link>
               <Link href="/settings" className="text-gray-400 hover:text-green-500 transition flex items-center gap-2">
                 <Settings className="h-4 w-4" />
                 Settings
+              </Link>
+              <Link
+                href="/genomic-timeline"
+                className="text-gray-400 hover:text-green-500 transition flex items-center gap-2"
+              >
+                <Clock className="h-4 w-4" />
+                Genomic Timeline
               </Link>
             </nav>
           </div>
@@ -137,6 +176,27 @@ export default function DashboardNav() {
               <Key className="h-5 w-5" />
               API Keys
             </Link>
+            <Link
+              href="/agent-collaboration"
+              className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500"
+            >
+              <Brain className="h-5 w-5" />
+              Agent Collaboration
+            </Link>
+            <Link
+              href="/genomic-visualization"
+              className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500"
+            >
+              <Activity className="h-5 w-5" />
+              Genomic Visualization
+            </Link>
+            <Link
+              href="/patient-case-studies"
+              className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500"
+            >
+              <ClipboardList className="h-5 w-5" />
+              Patient Cases
+            </Link>
             <Link href="/logo-showcase" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
               <Cube className="h-5 w-5" />
               Logo Showcase
@@ -145,9 +205,20 @@ export default function DashboardNav() {
               <Repeat className="h-5 w-5" />
               Logo Transition
             </Link>
+            <Link
+              href="/comparative-genomics"
+              className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500"
+            >
+              <Brain className="h-5 w-5" />
+              Comparative Genomics
+            </Link>
             <Link href="/settings" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
               <Settings className="h-5 w-5" />
               Settings
+            </Link>
+            <Link href="/genomic-timeline" className="flex items-center gap-2 py-3 text-gray-400 hover:text-green-500">
+              <Clock className="h-5 w-5" />
+              Genomic Timeline
             </Link>
           </nav>
         </div>
